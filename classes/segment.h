@@ -9,6 +9,10 @@ public:
     Segment(Point p, Point q, bool red) 
         : p_(p), q_(q), red_(red)
     {
+        if (p_ > q_) 
+            std::swap(p_, q_);
+        else if (p_ == q_) 
+            std::cerr << "ERROR: The two endpoints of a segment must be distinct. p = " << p_ << ", q = " << q_ << "." << std::endl;
     }
 
     Point p() const {

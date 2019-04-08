@@ -39,7 +39,7 @@ private:
 };
 
 // three-way comparison funciton
-int cmp(const Point &lhs, const Point &rhs) {
+inline int cmp(const Point &lhs, const Point &rhs) {
     if (lhs.x() != rhs.x()) 
         return lhs.x() - rhs.x();
     else

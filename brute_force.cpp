@@ -39,7 +39,7 @@ bool vertify_test_file(string file_name) {
             input >> px >> py >> rx >> ry;
             blue.push_back(Segment(Point(px, py), Point(rx, ry), false));
         }
-
+        
         int n_intersections = 0;
         for (const auto &red_seg : red) 
             for (const auto &blue_seg : blue) 
