@@ -1,3 +1,6 @@
+#ifndef POINT
+#define POINT
+
 #include <ostream>
 
 class Point {
@@ -51,3 +54,14 @@ inline bool operator> (const Point& lhs, const Point& rhs){ return cmp(lhs,rhs) 
 inline bool operator<=(const Point& lhs, const Point& rhs){ return cmp(lhs,rhs) <= 0; }
 inline bool operator>=(const Point& lhs, const Point& rhs){ return cmp(lhs,rhs) >= 0; }
 
+// returns 1 if (p, q, r) is ccw, 0 if collinear, -1 if cw.
+inline int orientation(const Point &p, const Point &q, const Point &r) {
+    long det = (long) (q.x() - p.x()) * (long) (r.y() - q.y()) - (long) (q.y() - p.y()) * (long) (r.x() - q.x());
+    if (det > 0) 
+        return 1;
+    else if (det == 0) 
+        return 0;
+    else 
+        return -1;
+}
+#endif
