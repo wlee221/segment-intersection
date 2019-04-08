@@ -11,7 +11,7 @@
 #include "classes/segment.h"
 using namespace std;
 
-bool vertify_test_file(string);
+bool vertify_test_file(const string&);
 
 int main(int argc, char* argv[]) {
     if (argc != 2) {
@@ -22,7 +22,7 @@ int main(int argc, char* argv[]) {
     return 0;
 }
 
-bool vertify_test_file(string file_name) {
+bool vertify_test_file(const string &file_name) {
     vector<Segment> red;
     vector<Segment> blue; 
     ifstream input(file_name); 
@@ -42,10 +42,7 @@ bool vertify_test_file(string file_name) {
         }
         
         int n_intersections = 0;
-        for (const auto &red_seg : red) 
-            for (const auto &blue_seg : blue) 
-                if (intersects(red_seg, blue_seg)) 
-                    ++n_intersections;
+
 
         if (n_intersections == k) 
             cout << "VERIFIED" << endl;
