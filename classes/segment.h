@@ -34,7 +34,7 @@ private:
     bool red_;
 };
 
-bool intersects(const Segment &lhs, const Segment &rhs) {
+inline bool intersects(const Segment &lhs, const Segment &rhs) {
     int det1 = orientation(lhs.p(), lhs.q(), rhs.p());
     int det2 = orientation(lhs.p(), lhs.q(), rhs.q());
     int det3 = orientation(rhs.p(), rhs.q(), lhs.p());

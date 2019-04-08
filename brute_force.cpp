@@ -45,7 +45,6 @@ bool vertify_test_file(string file_name) {
             for (const auto &blue_seg : blue) 
                 if (intersects(red_seg, blue_seg)) 
                     ++n_intersections;
-        
 
         if (n_intersections == k) 
             cout << "VERIFIED" << endl;
