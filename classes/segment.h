@@ -2,10 +2,12 @@
 #define SEGMENT
 
 #include <ostream>
+#include <limits>
 #include "point.h"
 
 class Segment {
 public:
+    // TODO: use enum instead of bool for red/blue
     Segment(Point p, Point q, bool red) 
         : p_(p), q_(q), red_(red)
     {
@@ -26,6 +28,13 @@ public:
     bool red() const {
         return red_;
     }
+
+    double slope() {
+        if (q_.x() == p_.x())
+            return std::numeric_limits<double>::infinity();
+        else 
+            return (q_.y() - p_.y()) / (q_.x() - p_.x());
+    } 
 
     friend std::ostream& operator<<(std::ostream& os, const Segment& s) {
         os << "(" << s.p() << ", " << s.q() << ")";

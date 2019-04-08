@@ -14,11 +14,12 @@ using namespace std;
 bool vertify_test_file(string);
 
 int main(int argc, char* argv[]) {
-    if (argc < 2) 
-        cerr << "Usage: " << argv[0] << " <file1 file2 ...>" << endl;
-    for (int i = 1; i < argc; ++i) 
-        vertify_test_file(argv[i]);
-    
+    if (argc != 2) {
+        cerr << "Usage: " << argv[0] << " <file1>" << endl;
+        return 1;
+    }
+    vertify_test_file(argv[1]);
+    return 0;
 }
 
 bool vertify_test_file(string file_name) {
