@@ -64,6 +64,6 @@ int main(int argc, char* argv[]) {
     }
 }
 
-bool sort_flags(vector<Segment> &red, vector<Segment> &blue, vector<Flag> &flags) {
+bool sort_flags(vector<Flag> &flags) {
     sort(flags.begin(), flags.end());
 }
