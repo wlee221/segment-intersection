@@ -8,7 +8,7 @@
 #include "classes/flag.h"
 using namespace std;
 
-bool sort_flags(vector<Segment> &red, vector<Segment> &blue, vector<Flag> &flags);
+bool sort_flags(vector<Flag> &flags);
 
 int main(int argc, char* argv[]) {
     if (argc != 3) {
