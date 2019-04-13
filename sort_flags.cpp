@@ -50,7 +50,7 @@ int main(int argc, char* argv[]) {
         auto start = chrono::high_resolution_clock::now(); 
 
         for (int i = 0; i < num_execution; ++i)
-            sort_flags(red, blue, flags);
+            sort_flags(flags);
 
         auto stop = chrono::high_resolution_clock::now(); 
         auto duration = chrono::duration<float>(stop - start);
