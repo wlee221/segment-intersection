@@ -29,11 +29,11 @@ public:
         return red_;
     }
 
-    double slope() {
+    float slope() {
         if (q_.x() == p_.x())
-            return std::numeric_limits<double>::infinity();
+            return std::numeric_limits<float>::infinity();
         else 
-            return (q_.y() - p_.y()) / (q_.x() - p_.x());
+            return (float) (q_.y() - p_.y()) / (float) (q_.x() - p_.x());
     } 
 
     friend std::ostream& operator<<(std::ostream& os, const Segment& s) {

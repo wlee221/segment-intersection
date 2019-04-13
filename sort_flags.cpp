@@ -1,41 +1,36 @@
-/*
- * This program vertifies red blue segment test files using brute-force algorithm. 
- *
- * ! @author William Lee
- */
-
 #include <iostream>
 #include <fstream>
 #include <vector>
 #include <algorithm>
+#include <chrono> 
 #include "classes/point.h"
 #include "classes/segment.h"
 #include "classes/flag.h"
 using namespace std;
 
-bool sort_flags(const string&);
+bool sort_flags(vector<Segment> &red, vector<Segment> &blue, vector<Flag> &flags);
 
 int main(int argc, char* argv[]) {
-    if (argc != 2) {
-        cerr << "Usage: " << argv[0] << " <file1>" << endl;
-        return 1;
+    if (argc != 3) {
+        cerr << "Usage: " << argv[0] << " <file_path> <number of executions>" << endl;
+        return 0;
     }
-    sort_flags(argv[1]);
-    return 0;
-}
+    // read input:
+    const string file_name = argv[1];
+    const int num_execution = stoi(argv[2]);
 
-bool sort_flags(const string &file_name) {
     vector<Segment> red;
-    vector<Segment> blue;
+    vector<Segment> blue; 
     vector<Flag> flags;
-    ifstream input(file_name); 
-    if (input.is_open()){
-        int m, n, k;
-        input >> m >> n >> k;
 
+    // read file 
+    ifstream input(file_name);
+    if (input.is_open()) {
+        int m, n, k;
         int px, py, rx, ry;
 
-        // TODO: check if we should do a copy of s when we add flags.
+        input >> m >> n >> k;
+
         for (int i = 0; i < m; i++) {
             input >> px >> py >> rx >> ry;
             Segment s = Segment(Point(px, py), Point(rx, ry), true);
@@ -50,15 +45,25 @@ bool sort_flags(const string &file_name) {
             blue.push_back(Segment(s));
             flags.push_back(Flag(s, s.p(), true));
             flags.push_back(Flag(s, s.q(), false));
-        }
+        }    
 
-        sort(flags.begin(), flags.end());
-        for (const auto &f : flags) {
+        auto start = chrono::high_resolution_clock::now(); 
+
+        for (int i = 0; i < num_execution; ++i)
+            sort_flags(red, blue, flags);
+
+        auto stop = chrono::high_resolution_clock::now(); 
+        auto duration = chrono::duration<float>(stop - start);
+
+        for (const auto &f : flags) 
             cout << f;
-        }     
-        
+
+        cout << "Run time = " << duration.count() / (float) num_execution << " ms" << endl;
     } else {
-        cerr << endl << "ERROR: file " << file_name << " cannot be opened." << endl;
+        cerr << "File could not be opened";
     }
-    return true;
+}
+
+bool sort_flags(vector<Segment> &red, vector<Segment> &blue, vector<Flag> &flags) {
+    sort(flags.begin(), flags.end());
 }

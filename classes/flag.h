@@ -26,7 +26,7 @@ public:
     }
 
     friend std::ostream& operator<<(std::ostream& os, const Flag& f) {
-        os  << "Flag: segment = " << f.s() << ", color = " << (f.s().red() ? "red" : "blue")
+        os  << "Flag: p = " << f.p() << ", slope = " << f.s().slope() << ", color = " << (f.s().red() ? "red" : "blue")
             << ", type = " << (f.start() ? "start" : "terminal") << "." << std::endl;
         return os;
     }
