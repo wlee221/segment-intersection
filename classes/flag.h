@@ -26,6 +26,10 @@ public:
         return type_;
     }
 
+    Color color() const {
+        return s_.type();
+    }
+
     friend std::ostream& operator<<(std::ostream& os, const Flag& f) {
         os  << "Flag: p = " << f.p() << ", slope = " << f.s().slope() << ", color = " << (f.s().type() == Color::red ? "red" : "blue")
             << ", s = " << f.s() << ", type = " << (f.type() == FlagType::start ? "start" : "terminal") << ".";

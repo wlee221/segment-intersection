@@ -9,6 +9,11 @@ enum class Color { red, blue };
 
 class Segment {
 public:
+    Segment()
+        : p_(Point()), q_(Point()), type_(Color::red)
+    {
+    }
+    
     Segment(Point p, Point q, Color type) 
         : p_(p), q_(q), type_(type)
     {
