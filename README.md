@@ -1,4 +1,4 @@
-# segment-intersection
+# Segment Intersection
 
 Red blue segment intersection implementation in C++. 
 
