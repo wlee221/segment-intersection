@@ -5,11 +5,12 @@
 #include <limits>
 #include "point.h"
 
+enum class Color { red, blue };
+
 class Segment {
 public:
-    // TODO: use enum instead of bool for red/blue
-    Segment(Point p, Point q, bool red) 
-        : p_(p), q_(q), red_(red)
+    Segment(Point p, Point q, Color type) 
+        : p_(p), q_(q), type_(type)
     {
         if (p_ > q_) 
             std::swap(p_, q_);
@@ -25,8 +26,8 @@ public:
         return q_;
     }
 
-    bool red() const {
-        return red_;
+    Color type() const {
+        return type_;
     }
 
     float slope() {
@@ -34,6 +35,14 @@ public:
             return std::numeric_limits<float>::infinity();
         else 
             return (float) (q_.y() - p_.y()) / (float) (q_.x() - p_.x());
+    } 
+
+    int point_orientation(const Point &pt) {
+        return orientation(this->p_, this->q_, pt);
+    }
+
+    bool operator==(const Segment &s) {
+        return this->p() == s.p() && this->q() == s.q();
     } 
 
     friend std::ostream& operator<<(std::ostream& os, const Segment& s) {
@@ -44,7 +53,7 @@ public:
 private:
     Point p_;
     Point q_;
-    bool red_;
+    Color type_;
 };
 
 inline bool intersects(const Segment &lhs, const Segment &rhs) {

@@ -10,10 +10,9 @@ using namespace std;
 int count_intersections(vector<Segment> &red, vector<Segment> &blue);
 
 int main(int argc, char* argv[]) {
-    if (argc != 3) {
+    if (argc != 3) 
         cerr << "Usage: " << argv[0] << " <file_path> <number of executions>" << endl;
-        return 0;
-    }
+
     // read input:
     const string file_name = argv[1];
     const int num_execution = stoi(argv[2]);
@@ -31,12 +30,12 @@ int main(int argc, char* argv[]) {
 
         for (int i = 0; i < m; i++) {
             input >> px >> py >> rx >> ry;
-            red.push_back(Segment(Point(px, py), Point(rx, ry), true));
+            red.push_back(Segment(Point(px, py), Point(rx, ry), Color::red));
         }
 
         for (int i = 0; i < n; i++) {
             input >> px >> py >> rx >> ry;
-            blue.push_back(Segment(Point(px, py), Point(rx, ry), false));
+            blue.push_back(Segment(Point(px, py), Point(rx, ry), Color::blue));
         }
 
         auto start = chrono::high_resolution_clock::now(); 
@@ -58,6 +57,7 @@ int main(int argc, char* argv[]) {
     } else {
         cerr << "ERROR: File could not be opened.";
     }
+    return 0;
 }
 
 int count_intersections(vector<Segment> &red, vector<Segment> &blue) {

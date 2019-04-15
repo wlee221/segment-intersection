@@ -11,10 +11,9 @@ using namespace std;
 bool sort_flags(vector<Flag> &flags);
 
 int main(int argc, char* argv[]) {
-    if (argc != 3) {
+    if (argc != 3) 
         cerr << "Usage: " << argv[0] << " <file_path> <number of executions>" << endl;
-        return 0;
-    }
+    
     // read input:
     const string file_name = argv[1];
     const int num_execution = stoi(argv[2]);
@@ -33,18 +32,18 @@ int main(int argc, char* argv[]) {
 
         for (int i = 0; i < m; i++) {
             input >> px >> py >> rx >> ry;
-            Segment s = Segment(Point(px, py), Point(rx, ry), true);
+            Segment s = Segment(Point(px, py), Point(rx, ry), Color::red);
             red.push_back(s);
-            flags.push_back(Flag(s, s.p(), true));
-            flags.push_back(Flag(s, s.q(), false));
+            flags.push_back(Flag(s, s.p(), FlagType::start));
+            flags.push_back(Flag(s, s.q(), FlagType::terminal));
         }
 
         for (int i = 0; i < n; i++) {
             input >> px >> py >> rx >> ry;
-            Segment s = Segment(Point(px, py), Point(rx, ry), false);
+            Segment s = Segment(Point(px, py), Point(rx, ry), Color::blue);
             blue.push_back(Segment(s));
-            flags.push_back(Flag(s, s.p(), true));
-            flags.push_back(Flag(s, s.q(), false));
+            flags.push_back(Flag(s, s.p(), FlagType::start));
+            flags.push_back(Flag(s, s.q(), FlagType::terminal));
         }    
 
         auto start = chrono::high_resolution_clock::now(); 
@@ -56,12 +55,14 @@ int main(int argc, char* argv[]) {
         auto duration = chrono::duration<float>(stop - start);
 
         for (const auto &f : flags) 
-            cout << f;
+            cout << f << endl;
 
         cout << "Run time = " << duration.count() / (float) num_execution << " ms" << endl;
     } else {
         cerr << "File could not be opened";
     }
+
+    return 0;
 }
 
 bool sort_flags(vector<Flag> &flags) {

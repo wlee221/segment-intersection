@@ -5,11 +5,12 @@
 #include "point.h"
 #include "segment.h"
 
+enum class FlagType { start, terminal };
+
 class Flag {
 public:
-    // TODO: use enum instead of bool for start/terminal
-    Flag(Segment s, Point p, bool start) 
-        : s_(s), p_(p), start_(start)
+    Flag(Segment s, Point p, FlagType type) 
+        : s_(s), p_(p), type_(type)
     {
     }
 
@@ -21,37 +22,37 @@ public:
         return s_;
     }
 
-    bool start() const {
-        return start_;
+    FlagType type() const {
+        return type_;
     }
 
     friend std::ostream& operator<<(std::ostream& os, const Flag& f) {
-        os  << "Flag: p = " << f.p() << ", slope = " << f.s().slope() << ", color = " << (f.s().red() ? "red" : "blue")
-            << ", type = " << (f.start() ? "start" : "terminal") << "." << std::endl;
+        os  << "Flag: p = " << f.p() << ", slope = " << f.s().slope() << ", color = " << (f.s().type() == Color::red ? "red" : "blue")
+            << ", s = " << f.s() << ", type = " << (f.type() == FlagType::start ? "start" : "terminal") << ".";
         return os;
     }
 
 private:
 	Segment s_;
 	Point p_;
-    bool start_;
+    FlagType type_;
 };
 
 inline int cmp(const Flag &lhs, const Flag &rhs) {
     if (lhs.p() != rhs.p()) {
         return cmp(lhs.p(), rhs.p());
-    } else if (lhs.start() != rhs.start()) {
-        return lhs.start() ? 1 : -1; // terminal goes first
+    } else if (lhs.type() != rhs.type()) {
+        return (lhs.type() == FlagType::terminal) ? -1 : 1; // terminal goes first
     } else if (lhs.s().slope() != rhs.s().slope()) {
         return (lhs.s().slope() < rhs.s().slope()) ? -1 : 1;
+    } else if (lhs.type() == rhs.type()) {
+        std::cout << "Error: overlapping segment with same color";
+        return 0;
+    } else if (lhs.type() == FlagType::start) {
+        return (lhs.s().type() == Color::blue) ? -1 : 1; // blue start < red start
     } else {
-        if (lhs.start()) {
-            return (lhs.s().red()) ? 1 : -1; // blue start < red start
-        } else {
-            return (lhs.s().red()) ? -1 : 1; // red terminal < blue terminal
-        }
-    }   
-    std::cerr << "ERROR: overlapping lines of same color";
+        return (lhs.s().type()) == Color::red ? -1 : 1; // red terminal < blue terminal
+    }
     return 0;
 }
 
