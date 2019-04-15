@@ -59,7 +59,7 @@ int main(int argc, char* argv[]) {
             broken_segments = sweep_line(flags, Color::red);
         }
         if (broken_segments.has_value()) {  
-            
+
         } else {
             cerr << "Error: Intersection detected." << endl;
         }
@@ -138,6 +138,5 @@ optional<vector<Segment>> sweep_line(vector<Flag> &flags, Color color) {
             }
         }
     }
-
     return broken_segments;
 } 

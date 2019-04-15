@@ -43,7 +43,7 @@ public:
     } 
 
     bool operator==(const Segment &s) {
-        return this->p() == s.p() && this->q() == s.q();
+        return orientation(this->p(), this->q(), s.p()) == 0 && orientation(this->p(), this->q(), s.q()) == 0;
     } 
 
     friend std::ostream& operator<<(std::ostream& os, const Segment& s) {
