@@ -58,14 +58,19 @@ int main(int argc, char* argv[]) {
         for (int i = 0; i < num_execution; ++i) {
             broken_segments = sweep_line(flags, Color::red);
         }
-        if (broken_segments.has_value()) {  
-
-        } else {
-            cerr << "Error: Intersection detected." << endl;
-        }
 
         auto stop = chrono::high_resolution_clock::now(); 
         auto duration = chrono::duration<float>(stop - start);
+
+        std::vector<Segment> red;
+        if (broken_segments.has_value()) {  
+            red = broken_segments.value();
+            for (const auto &s: red) {
+                cout << s << endl;
+            }
+        } else {
+            cerr << "Error: Intersection detected." << endl;
+        }
 
         cout << "Run time = " << duration.count() / (float) num_execution << " ms" << endl;
     } else {
