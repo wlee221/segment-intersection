@@ -59,8 +59,7 @@ int main(int argc, char* argv[]) {
             broken_segments = sweep_line(flags, Color::red);
         }
         if (broken_segments.has_value()) {  
-            std::cout << "new size = " << broken_segments.value().size() << endl;
-
+            
         } else {
             cerr << "Error: Intersection detected." << endl;
         }
@@ -90,7 +89,7 @@ optional<vector<Segment>> sweep_line(vector<Flag> &flags, Color color) {
             if (f.color() == color) {
                 // flag has the same color as the segment color we are breaking. We check for intersection and flag on segment.
                 for (int j = 0; j < active.size() - 1; ++j) {
-                    if (active[j].point_orientation(f.p()) > 0 && active[j + 1].point_orientation(f.p()) < 0) {
+                    if (orientation(active[j], f.p()) > 0 && orientation(active[j + 1], f.p()) < 0) {
                         if (intersects(active[j], f.s())) {
                             return {};
                         }
@@ -99,7 +98,7 @@ optional<vector<Segment>> sweep_line(vector<Flag> &flags, Color color) {
                         }
                         active.insert(active.begin() + j + 1, f.s());   
                         break; 
-                    } else if (active[j].point_orientation(f.p()) == 0) {
+                    } else if (orientation(active[j], f.p()) == 0) {
                         cout << "breaking";
                         // need to break the segment
                         Segment old_seg = Segment(active[j].p(), f.p(), color);
@@ -112,7 +111,7 @@ optional<vector<Segment>> sweep_line(vector<Flag> &flags, Color color) {
             } else {
                 // flag has different color from the color we are breaking. 
                 for (int j = 0; j < active.size() - 1; ++j) {
-                    if (active[j].point_orientation(f.p()) == 0) {
+                    if (orientation(active[j], f.p()) == 0) {
                         cout << "breaking";
                         Segment old_seg = Segment(active[j].p(), f.p(), color);
                         Segment new_seg = Segment(f.p(), active[j].q(), color);

@@ -42,10 +42,6 @@ public:
             return (float) (q_.y() - p_.y()) / (float) (q_.x() - p_.x());
     } 
 
-    int point_orientation(const Point &pt) {
-        return orientation(this->p_, this->q_, pt);
-    }
-
     bool operator==(const Segment &s) {
         return this->p() == s.p() && this->q() == s.q();
     } 
@@ -72,6 +68,11 @@ inline bool intersects(const Segment &lhs, const Segment &rhs) {
     if (!(det3 * det4 == -1))
         return false;
     return true;
+}
+
+// line point orientation
+inline int orientation(const Segment &s, const Point &pt) {
+    return orientation(s.p(), s.q(), pt);
 }
 
 #endif

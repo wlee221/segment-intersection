@@ -77,7 +77,7 @@ optional<pair<Segment, Segment>> sweep_line(vector<Flag> &flags) {
         Flag f = flags[i];
         if (f.type() == FlagType::start) {
             for (int j = 0; j < active.size() - 1; ++j) {
-                if (active[j].point_orientation(f.p()) > 0 && active[j + 1].point_orientation(f.p()) < 0) {
+                if (orientation(active[j], f.p()) > 0 && orientation(active[j + 1], f.p()) < 0) {
                     if (intersects(active[j], f.s())) {
                         return pair<Segment, Segment> (active[j], f.s());
                     }
