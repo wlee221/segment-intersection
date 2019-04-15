@@ -39,8 +39,6 @@ int main(int argc, char* argv[]) {
         }
 
         sort(flags.begin(), flags.end());
-        for (const auto &f : flags) 
-            cout << f << endl;
         auto start = chrono::high_resolution_clock::now(); 
 
         for (int i = 0; i < num_execution; ++i) {
