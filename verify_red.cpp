@@ -9,7 +9,7 @@
 #include "classes/flag.h"
 using namespace std;
 
-optional<pair<Segment, Segment>> sweep_line(vector<Segment> &red, vector<Flag> &flags);
+optional<pair<Segment, Segment>> sweep_line(vector<Flag> &flags);
 
 int main(int argc, char* argv[]) {
     if (argc != 3) 
@@ -41,14 +41,14 @@ int main(int argc, char* argv[]) {
         sort(flags.begin(), flags.end());
         auto start = chrono::high_resolution_clock::now(); 
 
+        optional<pair<Segment, Segment>> intersection;
         for (int i = 0; i < num_execution; ++i) {
-            sweep_line(red, flags);
+            intersection = sweep_line(flags);
         }
 
         auto stop = chrono::high_resolution_clock::now(); 
         auto duration = chrono::duration<float>(stop - start);
 
-        auto intersection = sweep_line(red, flags);
         if (intersection.has_value()) {
             cerr << "ERROR: intersection was found: " << intersection.value().first
                  << ", " << intersection.value().second << "." << endl;
@@ -63,7 +63,7 @@ int main(int argc, char* argv[]) {
     return 0;
 }
 
-optional<pair<Segment, Segment>> sweep_line(vector<Segment> &red, vector<Flag> &flags) {
+optional<pair<Segment, Segment>> sweep_line(vector<Flag> &flags) {
     vector<Segment> active;
 
     const int bound_min = -1 << 20; // -2^10;
