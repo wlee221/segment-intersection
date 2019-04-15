@@ -28,16 +28,15 @@ int main(int argc, char* argv[]) {
 
         input >> m >> n >> k;
 
-        for (int i = 0; i < m; i++) {
+        for (int i = 0; i < m + n; i++) {
             input >> px >> py >> rx >> ry;
-            red.push_back(Segment(Point(px, py), Point(rx, ry), Color::red));
+            if (i < m)
+                red.push_back(Segment(Point(px, py), Point(rx, ry), Color::red));
+            else
+                blue.push_back(Segment(Point(px, py), Point(rx, ry), Color::blue));
         }
-
-        for (int i = 0; i < n; i++) {
-            input >> px >> py >> rx >> ry;
-            blue.push_back(Segment(Point(px, py), Point(rx, ry), Color::blue));
-        }
-
+        for (const auto& r : red) 
+            cout << r << endl;
         auto start = chrono::high_resolution_clock::now(); 
 
         int k_test;

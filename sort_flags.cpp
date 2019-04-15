@@ -18,8 +18,6 @@ int main(int argc, char* argv[]) {
     const string file_name = argv[1];
     const int num_execution = stoi(argv[2]);
 
-    vector<Segment> red;
-    vector<Segment> blue; 
     vector<Flag> flags;
 
     // read file 
@@ -30,22 +28,14 @@ int main(int argc, char* argv[]) {
 
         input >> m >> n >> k;
 
-        for (int i = 0; i < m; i++) {
+        for (int i = 0; i < m + n; i++) {
             input >> px >> py >> rx >> ry;
-            Segment s = Segment(Point(px, py), Point(rx, ry), Color::red);
-            red.push_back(s);
+            Color c = (i < m) ? Color::red : Color::blue;
+            Segment s = Segment(Point(px, py), Point(rx, ry), c);
             flags.push_back(Flag(s, s.p(), FlagType::start));
             flags.push_back(Flag(s, s.q(), FlagType::terminal));
         }
-
-        for (int i = 0; i < n; i++) {
-            input >> px >> py >> rx >> ry;
-            Segment s = Segment(Point(px, py), Point(rx, ry), Color::blue);
-            blue.push_back(Segment(s));
-            flags.push_back(Flag(s, s.p(), FlagType::start));
-            flags.push_back(Flag(s, s.q(), FlagType::terminal));
-        }    
-
+        
         auto start = chrono::high_resolution_clock::now(); 
 
         for (int i = 0; i < num_execution; ++i)
