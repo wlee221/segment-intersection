@@ -40,7 +40,7 @@ inline optional<vector<Segment>> sweep_line(vector<Flag> &flags, Color color) {
                         active.insert(active.begin() + j + 1, f.s());   
                         break; 
                     } else if (orientation(active[j], f.p()) == 0) {
-                        cout << "breaking";
+                        cout << "breaking" << endl;
                         // need to break the segment
                         Segment old_seg = Segment(active[j].p(), f.p(), color);
                         Segment new_seg = Segment(f.p(), active[j].q(), color);
@@ -53,7 +53,7 @@ inline optional<vector<Segment>> sweep_line(vector<Flag> &flags, Color color) {
                 // flag has different color from the color we are breaking. 
                 for (int j = 0; j < active.size() - 1; ++j) {
                     if (orientation(active[j], f.p()) == 0) {
-                        cout << "breaking";
+                        cout << "breaking" << endl;
                         Segment old_seg = Segment(active[j].p(), f.p(), color);
                         Segment new_seg = Segment(f.p(), active[j].q(), color);
                         broken_segments.push_back(old_seg); // old_seg will no longer be used. Push it to broken_segments.
