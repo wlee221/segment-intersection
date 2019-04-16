@@ -3,7 +3,7 @@
 
 #include <ostream>
 #include <limits>
-#include "point.h"
+#include "point.hpp"
 
 enum class Color { red, blue };
 

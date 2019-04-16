@@ -14,10 +14,10 @@
 #include <algorithm>
 #include <optional>
 #include <chrono> 
-#include "classes/point.h"
-#include "classes/segment.h"
-#include "classes/flag.h"
-#include "break_segments.h"
+#include "classes/point.hpp"
+#include "classes/segment.hpp"
+#include "classes/flag.hpp"
+#include "break_segments.hpp"
 using namespace std;
 
 int main(int argc, char* argv[]) {

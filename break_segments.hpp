@@ -10,9 +10,9 @@
 #include <vector>
 #include <algorithm>
 #include <optional>
-#include "classes/point.h"
-#include "classes/segment.h"
-#include "classes/flag.h"
+#include "classes/point.hpp"
+#include "classes/segment.hpp"
+#include "classes/flag.hpp"
 using namespace std;
 
 inline optional<vector<Segment>> sweep_line(vector<Flag> &flags, Color color) {

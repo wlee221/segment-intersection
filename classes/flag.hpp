@@ -2,8 +2,8 @@
 #define FLAG
 
 #include <ostream>
-#include "point.h"
-#include "segment.h"
+#include "point.hpp"
+#include "segment.hpp"
 
 enum class FlagType { start, terminal };
 

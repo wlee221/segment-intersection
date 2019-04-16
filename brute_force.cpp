@@ -3,8 +3,8 @@
 #include <vector>
 #include <string>
 #include <chrono> 
-#include "classes/point.h"
-#include "classes/segment.h"
+#include "classes/point.hpp"
+#include "classes/segment.hpp"
 using namespace std;
 
 int count_intersections(vector<Segment> &red, vector<Segment> &blue);

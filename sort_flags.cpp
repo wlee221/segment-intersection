@@ -3,9 +3,9 @@
 #include <vector>
 #include <algorithm>
 #include <chrono> 
-#include "classes/point.h"
-#include "classes/segment.h"
-#include "classes/flag.h"
+#include "classes/point.hpp"
+#include "classes/segment.hpp"
+#include "classes/flag.hpp"
 using namespace std;
 
 bool sort_flags(vector<Flag> &flags);
