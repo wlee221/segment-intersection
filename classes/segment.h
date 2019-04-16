@@ -42,8 +42,8 @@ public:
             return (float) (q_.y() - p_.y()) / (float) (q_.x() - p_.x());
     } 
 
-    bool operator==(const Segment &s) {
-        return orientation(this->p(), this->q(), s.p()) == 0 && orientation(this->p(), this->q(), s.q()) == 0;
+    bool operator==(const Segment &s) const {
+        return orientation(p_, q_, s.p()) == 0 && orientation(p_, q_, s.q()) == 0;
     } 
 
     friend std::ostream& operator<<(std::ostream& os, const Segment& s) {
