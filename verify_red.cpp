@@ -90,7 +90,7 @@ optional<pair<Segment, Segment>> sweep_line(vector<Flag> &flags) {
             if (intersects(above, f.s()))
                 return make_pair(above, f.s());
             if (intersects(below, f.s()))
-                return make_pair<Segment, Segment> (below, f.s());
+                return make_pair(below, f.s());
             insert_segment(active, f.s());
         } else {
             // need to remove the segment of f. 
