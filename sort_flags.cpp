@@ -1,14 +1,9 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
-#include <algorithm>
 #include <chrono> 
-#include "classes/point.hpp"
-#include "classes/segment.hpp"
-#include "classes/flag.hpp"
+#include "impl/sort_flags.hpp"
 using namespace std;
-
-bool sort_flags(vector<Flag> &flags);
 
 int main(int argc, char* argv[]) {
     if (argc != 3) 
@@ -53,8 +48,4 @@ int main(int argc, char* argv[]) {
     }
 
     return 0;
-}
-
-bool sort_flags(vector<Flag> &flags) {
-    sort(flags.begin(), flags.end());
 }

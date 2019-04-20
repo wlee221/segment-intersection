@@ -1,8 +1,5 @@
 /*
  * SI5: Breaks red segments such that none contains any flag point. 
- * Note that sweep_line is written generalized such that it can break red OR 
- * blue segments. This is to help implement SI6, where I need to break both colors.
- * Implementation of break_segments() is in the header file.
  *
  * Author:  William Lee
  * Class:   Comp 651
@@ -14,10 +11,7 @@
 #include <algorithm>
 #include <optional>
 #include <chrono> 
-#include "classes/point.hpp"
-#include "classes/segment.hpp"
-#include "classes/flag.hpp"
-#include "break_segments.hpp"
+#include "impl/break_segments.hpp"
 using namespace std;
 
 int main(int argc, char* argv[]) {
@@ -56,7 +50,7 @@ int main(int argc, char* argv[]) {
 
         optional<vector<Segment>> broken_segments;
         for (int i = 0; i < num_execution; ++i) {
-            broken_segments = sweep_line(flags, Color::red);
+            broken_segments = break_segments(flags, Color::red);
         }
 
         auto stop = chrono::high_resolution_clock::now(); 

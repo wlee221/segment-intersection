@@ -1,5 +1,5 @@
 /*
- * Implementation of break_segments(...). To be used in SI5 and onwards. 
+ * Implementation of break_segment(...). To be used in SI5 and onwards. 
  *
  * Author: William Lee
  * Class: Comp 651
@@ -11,9 +11,9 @@
 #include <algorithm>
 #include <optional>
 #include <map>
-#include "classes/point.hpp"
-#include "classes/segment.hpp"
-#include "classes/flag.hpp"
+#include "../classes/point.hpp"
+#include "../classes/segment.hpp"
+#include "../classes/flag.hpp"
 using namespace std;
 
 inline void insert_segment(multimap<int, Segment> &active, const Segment s) {
@@ -21,7 +21,7 @@ inline void insert_segment(multimap<int, Segment> &active, const Segment s) {
     active.insert({s.p().y(), s});
 }
 
-inline optional<vector<Segment>> sweep_line(vector<Flag> &flags, Color color) {
+inline optional<vector<Segment>> break_segments(vector<Flag> &flags, Color color) {
     multimap<int, Segment> active;
     vector<Segment> broken_segments;
 

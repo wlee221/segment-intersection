@@ -3,11 +3,8 @@
 #include <vector>
 #include <string>
 #include <chrono> 
-#include "classes/point.hpp"
-#include "classes/segment.hpp"
+#include "impl/brute_force.hpp"
 using namespace std;
-
-int count_intersections(vector<Segment> &red, vector<Segment> &blue);
 
 int main(int argc, char* argv[]) {
     if (argc != 3) 
@@ -35,8 +32,6 @@ int main(int argc, char* argv[]) {
             else
                 blue.push_back(Segment(Point(px, py), Point(rx, ry), Color::blue));
         }
-        for (const auto& r : red) 
-            cout << r << endl;
         auto start = chrono::high_resolution_clock::now(); 
 
         int k_test;
@@ -57,13 +52,4 @@ int main(int argc, char* argv[]) {
         cerr << "ERROR: File could not be opened.";
     }
     return 0;
-}
-
-int count_intersections(vector<Segment> &red, vector<Segment> &blue) {
-    int k = 0;
-    for (const auto &red_seg : red) 
-        for (const auto &blue_seg : blue) 
-            if (intersects(red_seg, blue_seg)) 
-                ++k;
-    return k;
 }
