@@ -1,5 +1,5 @@
 # Segment Intersection
-#####Author: William Lee
+##### Author: William Lee
 
 ## Introduction
 This repository contains stages for red/blue segment intersections as outlined in [staged programming project](https://raindrops.in/snoeyink/view/54084b864251df7f2f8b4567). 
