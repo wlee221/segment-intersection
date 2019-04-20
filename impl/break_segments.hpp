@@ -1,10 +1,3 @@
-/*
- * Implementation of break_segment(...). To be used in SI5 and onwards. 
- *
- * Author: William Lee
- * Class: Comp 651
- */
-
 #include <iostream>
 #include <fstream>
 #include <vector>
@@ -16,11 +9,22 @@
 #include "../classes/flag.hpp"
 using namespace std;
 
+// helper function that inserts segment to a self-balancing tree.
 inline void insert_segment(multimap<int, Segment> &active, const Segment s) {
     // inserts segment s with s.p().y() as its key value.
     active.insert({s.p().y(), s});
 }
 
+/******************************************************************
+ * function break_segments
+ *
+ * Input: 
+ *      flags, vector of flags
+ *      color, color of the segments to break 
+ * Output: 
+ *      vector of segments with specified color, broken such that
+ *      none contains flag point.
+ *****************************************************************/
 inline optional<vector<Segment>> break_segments(vector<Flag> &flags, Color color) {
     multimap<int, Segment> active;
     vector<Segment> broken_segments;

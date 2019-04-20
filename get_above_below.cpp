@@ -1,5 +1,5 @@
 /*
- * SI3: Sort flags and prints the list of the flags in sorted order
+ * SI6: Compute segements above and below each flag
  *
  * Author:  William Lee
  * Class:   Comp 651
@@ -7,21 +7,20 @@
 
 #include <iostream>
 #include <fstream>
-#include <vector>
+#include <algorithm>
 #include <chrono> 
-#include "impl/sort_flags.hpp"
+#include "impl/get_above_below.hpp"
 using namespace std;
 
 int main(int argc, char* argv[]) {
     if (argc != 3) 
         cerr << "Usage: " << argv[0] << " <file_path> <number of executions>" << endl;
-    
-    // read arguments:
+
+    // read arguments
     const string file_name = argv[1];
     const int num_execution = stoi(argv[2]);
 
-    // store flags in a vector.
-    vector<Flag> flags;
+    vector<Flag> flags; // store flags in a vector
 
     // read file 
     ifstream input(file_name);
@@ -33,27 +32,33 @@ int main(int argc, char* argv[]) {
 
         for (int i = 0; i < m + n; i++) {
             input >> px >> py >> rx >> ry;
-            Color c = (i < m) ? Color::red : Color::blue;
-            Segment s = Segment(Point(px, py), Point(rx, ry), c);
+            Segment s;
+            if (i < m) {
+                s = Segment(Point(px, py), Point(rx, ry), Color::red);
+            } else {
+                s = Segment(Point(px, py), Point(rx, ry), Color::blue);
+            }
             flags.push_back(Flag(s, s.p(), FlagType::start));
             flags.push_back(Flag(s, s.q(), FlagType::terminal));
         }
-        
-        auto start = chrono::high_resolution_clock::now(); // start time
 
-        for (int i = 0; i < num_execution; ++i) 
-            sort_flags(flags); 
+        sort(flags.begin(), flags.end());
+        auto start = chrono::high_resolution_clock::now(); // start timer
+
+        map<Flag, AboveBelow> flag_above_below; // maps each flag to an AboveBelow class
+        for (int i = 0; i < num_execution; ++i) {
+            flag_above_below = get_above_below(flags);
+        }
 
         auto stop = chrono::high_resolution_clock::now(); // end timer
         auto duration = chrono::duration<float>(stop - start);
 
-        for (const auto &f : flags) 
-            cout << f << endl; // print sorted flags
+        for (auto it = flag_above_below.begin(); it != flag_above_below.end(); ++it) 
+            cout << it->first << endl << "AboveBelow: " << it->second << endl << endl;
 
         cout << "Run time = " << duration.count() / (float) num_execution << " ms" << endl;
     } else {
-        cerr << "File could not be opened";
+        cerr << "File could not be opened." << endl;
     }
-
     return 0;
 }

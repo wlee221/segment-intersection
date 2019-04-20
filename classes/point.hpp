@@ -1,3 +1,7 @@
+/*
+ * Class Point stores (x, y) coordinates for each point.
+ */ 
+
 #ifndef POINT
 #define POINT
 
@@ -23,15 +27,17 @@ public:
         return y_;
     }
 
+    // override addition operator
     Point operator+(const Point &p) {
         return Point(x_ + p.x_, y_ + p.y_);
     } 
 
+    // override subtraction operator
     Point operator-(const Point &p) {
         return Point(x_ - p.x_, y_ - p.y_);
     } 
 
-
+    // stream insertion operator
     friend std::ostream& operator<<(std::ostream& os, const Point& p) {
         os << "(" << p.x() << ", " << p.y() << ")";
         return os;

@@ -4,11 +4,21 @@
 #include "../classes/segment.hpp"
 #include "../classes/flag.hpp"
 
+// helper function that inserts segment to a self-balancing tree.
 inline void insert_segment(std::multimap<int, Segment> &active, const Segment s) {
     // inserts segment s with s.p().y() as its key value.
     active.insert({s.p().y(), s});
 }
 
+/******************************************************************
+ * function sweep_line
+ *
+ * Input: 
+ *      flags, vector of flags  
+ * Output: 
+ *      If there exists crossing, return intersecting segment pair. 
+ *      Otherwise, return empty pair {}.
+ *****************************************************************/
 inline std::optional<std::pair<Segment, Segment>> sweep_line(std::vector<Flag> &flags) {
     std::multimap<int, Segment> active;  
 

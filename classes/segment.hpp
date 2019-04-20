@@ -1,3 +1,7 @@
+/*
+ * Class Segment stores two endpoints (class Point) and associated color for each segment.
+ */ 
+
 #ifndef SEGMENT
 #define SEGMENT
 
@@ -5,6 +9,7 @@
 #include <limits>
 #include "point.hpp"
 
+// declare two possible color of each segments.
 enum class Color { red, blue };
 
 class Segment {
@@ -18,7 +23,7 @@ public:
         : p_(p), q_(q), type_(type)
     {
         if (p_ > q_) 
-            std::swap(p_, q_);
+            std::swap(p_, q_); // make sure p is the left endpoint
         else if (p_ == q_) 
             std::cerr << "ERROR: The two endpoints of a segment must be distinct. p = " << p_ << ", q = " << q_ << "." << std::endl;
     }
@@ -42,10 +47,12 @@ public:
             return (float) (q_.y() - p_.y()) / (float) (q_.x() - p_.x());
     } 
 
+    // overload equality operator
     bool operator==(const Segment &s) const {
         return orientation(p_, q_, s.p()) == 0 && orientation(p_, q_, s.q()) == 0;
     } 
 
+    // overload insertion operator
     friend std::ostream& operator<<(std::ostream& os, const Segment& s) {
         os << "(" << s.p() << ", " << s.q() << ")";
         return os;
@@ -57,6 +64,7 @@ private:
     Color type_;
 };
 
+// return true iff two segemtns intersect
 inline bool intersects(const Segment &lhs, const Segment &rhs) {
     int det1 = orientation(lhs.p(), lhs.q(), rhs.p());
     int det2 = orientation(lhs.p(), lhs.q(), rhs.q());

@@ -1,3 +1,10 @@
+/*
+ * SI1: Counts red/blue crossing using brute force algorithm. 
+ *
+ * Author:  William Lee
+ * Class:   Comp 651
+ */
+
 #include <iostream>
 #include <fstream>
 #include <vector>
@@ -10,18 +17,19 @@ int main(int argc, char* argv[]) {
     if (argc != 3) 
         cerr << "Usage: " << argv[0] << " <file_path> <number of executions>" << endl;
 
-    // read input:
+    // read arguments:
     const string file_name = argv[1];
     const int num_execution = stoi(argv[2]);
 
+    // store red/blue segments in vectors
     vector<Segment> red;
     vector<Segment> blue;  
 
     // read file 
     ifstream input(file_name);
     if (input.is_open()) {
-        int m, n, k;
-        int px, py, rx, ry;
+        int m, n, k; // m: # red segments, n: # blue segments, k: # expected red/blue crossing
+        int px, py, rx, ry; // (px, py) and (rx, ry) store two endpoints of each segments
 
         input >> m >> n >> k;
 
@@ -32,13 +40,13 @@ int main(int argc, char* argv[]) {
             else
                 blue.push_back(Segment(Point(px, py), Point(rx, ry), Color::blue));
         }
-        auto start = chrono::high_resolution_clock::now(); 
+        auto start = chrono::high_resolution_clock::now(); // start timer
 
-        int k_test;
-        for (int i = 0; i < num_execution; ++i)
+        int k_test; // # red/blue crossing computed by brute force algorithm
+        for (int i = 0; i < num_execution; ++i) 
             k_test = count_intersections(red, blue);
 
-        auto stop = chrono::high_resolution_clock::now(); 
+        auto stop = chrono::high_resolution_clock::now(); // end timer
         auto duration = chrono::duration<float, milli>(stop - start);
 
         if (k == k_test)

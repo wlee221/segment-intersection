@@ -1,3 +1,7 @@
+/*
+ * Class Flag stores segment, point, and type associated with each flag.
+ */ 
+
 #ifndef FLAG
 #define FLAG
 
@@ -30,6 +34,7 @@ public:
         return s_.type();
     }
 
+    // stream insertion operator
     friend std::ostream& operator<<(std::ostream& os, const Flag& f) {
         os  << "Flag: p = " << f.p() << ", slope = " << f.s().slope() << ", color = " << (f.s().type() == Color::red ? "red" : "blue")
             << ", s = " << f.s() << ", type = " << (f.type() == FlagType::start ? "start" : "terminal") << ".";
@@ -37,11 +42,12 @@ public:
     }
 
 private:
-	Segment s_;
-	Point p_;
+    Segment s_;
+    Point p_;
     FlagType type_;
 };
 
+// 3 way comparison function
 inline int cmp(const Flag &lhs, const Flag &rhs) {
     if (lhs.p() != rhs.p()) {
         return cmp(lhs.p(), rhs.p());

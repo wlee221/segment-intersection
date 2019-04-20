@@ -6,11 +6,20 @@
 #include "../classes/flag.hpp"
 #include "../classes/above_below.hpp"
 
+// helper function that inserts segment to a self-balancing tree.
 inline void insert_segment(std::multimap<int, Segment> &active, const Segment s) {
     // inserts segment s with s.p().y() as its key value.
     active.insert({s.p().y(), s});
 }
 
+/******************************************************************
+ * function get_above_below
+ *
+ * Input: 
+ *      flags, vector of flags
+ * Output: 
+ *      multimap that maps each flag to an AboveBelow class
+ *****************************************************************/
 inline std::map<Flag, AboveBelow> get_above_below(std::vector<Flag> flags) {
     std::map<Flag, AboveBelow> above_below;
     std::multimap<int, Segment> active;
