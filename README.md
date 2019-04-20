@@ -1,6 +1,6 @@
 # Segment Intersection
-##### Author: William Lee
-##### Class: Comp 651
+**Author**: William Lee  
+**Class**: Comp 651
 
 ## Introduction
 This repository contains stages for red/blue segment intersections as outlined in [staged programming project](https://raindrops.in/snoeyink/view/54084b864251df7f2f8b4567). 
@@ -33,22 +33,22 @@ g++ brute_force.cpp -std=17 -o BFwilliam
 ```
 ## Project Description
 ### Input text file format
-* First line is three numbers `m n k`
-* m rows of coordinates `px py rx ry` of red segments
-* n rows of coordinates `px py rx ry` of blue segments
+* First line is three numbers `m n k`.
+* `m` rows of coordinates `px py rx ry` of red segments.
+* `n` rows of coordinates `px py rx ry` of blue segments.
 
-### `/brute_force.cpp` (SI1)
+### SI1: `/brute_force.cpp` 
 **Algorithm used**: `count_intersections` in `impl/brute_force.hpp`  
 **Input**: `red`, `std::vector` of red segments. `blue`, `std::vector` of blue segments  
 **Output**: number of red/blue intersections.  
-**Runtime Complexity**: `O(N<sup>2</sup>)`, where `N = m + n`.  
+**Runtime Complexity**: O(N<sup>2</sup>), where N = m + n.  
   
 `brute_force.cpp` reads the test file and counts the number of red/blue intersection and checks if it matches `k`. It checks every pair of red and blue segments and checks for intersection. Segment intersection test is performed using four orientation tests. If the number of intersection matches `k`, then program outputs `VERIFIED`. Otherwise, it outputs the number of computed intersections. 
 
-### `/sort_flags.cpp` (SI3)
+### SI3: `/sort_flags.cpp` 
 **Algorithm used**: `sort_flags` in `impl/sort_flags.hpp`  
 **Input**: `flags`, `std::vector` of flags    
-**Output**: sorts `flags` (no return value) 
-**Runtime Complexity**: `O(Nlog N)`, where `N = m + n`.  
+**Output**: sorts `flags` (no return value)   
+**Runtime Complexity**: O(Nlog N), where N = m + n.  
 
 `sort_flags.cpp` first reads `test file` and generates start and terminal flags for each segment. It then sorts the flags using `std::sort` and prints to the output stream. Sorting is based on three-way comparison function in `classes/flag.hpp`. 
