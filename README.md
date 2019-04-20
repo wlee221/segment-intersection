@@ -15,7 +15,7 @@ This repository is divided to following directories:
 
 ### Compilation and Execution
 ##### Compilation
-C++17 Compiler is required to compile the source files. For most commercial compilers (e.g. gcc, clang), you need to add `-std=c++17` flag to enable c++17 features. Note that no external libraries are required.  
+C++17 Compiler is required to compile the source files. For most commercial compilers, you need to add `-std=c++17` flag to enable c++17 features. Note that no external libraries are required.  
 Bash program `compile.sh` is provided to help compilation with gcc/g++. It compiles all .cpp source files and saves executables in `build/`. 
 
 ##### Execution 
