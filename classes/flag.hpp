@@ -47,7 +47,7 @@ private:
     FlagType type_;
 };
 
-// 3 way comparison function
+// three-way comparison function
 inline int cmp(const Flag &lhs, const Flag &rhs) {
     if (lhs.p() != rhs.p()) {
         return cmp(lhs.p(), rhs.p());
