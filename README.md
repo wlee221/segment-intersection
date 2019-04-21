@@ -80,9 +80,9 @@ I also focused on improving code conciseness. In particular, I used `std::option
 * Keeping concise code. This project involved multiple geometric primitives that I built from scratch. Hence, my code was initially unorganized. The following approaches helped:
     * Data structure: I implemented data structure with arrays. This is resulted in multiple linear search and overall unreadable code. I was surprised that using a rb-tree was actually much more readable although it involves more advanced operations.  
     * Refractoring and operation overloading were especially helpful. As I moved classes and algorithm implementation to subdirectories, the source files became more shorter (all within 100 lines).  
-    
+
 *SI7*
-* Despite understanding algorithm for SI7, I could not finish it by the deadline. In particular, writing custom data structures for the bundles took more time than expected. This resulted from inappropriate time management and workflow:
+* Despite understanding algorithm for SI7, I could not finish it by the deadline. In particular, writing custom data structure for the bundles took more time than expected. This resulted from inappropriate time management and workflow:
     *  I used arrays to implement SI4-7 initially. When I switched to rb-tree, I had to refractor all sweep line codes, when I already spent so much time on implementing it with arrays. Instead, I should have started with rb-tree, or refractor after I finished SI7. 
 
 ##### Improvements
