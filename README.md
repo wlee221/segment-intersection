@@ -40,6 +40,7 @@ g++ brute_force.cpp -std=17 -o BFwilliam
 * `n` rows of coordinates `px py rx ry` of blue segments.
 
 ### Source file description
+*Note*: See README.md in impl/ to see algorithm input, output, and complexity details. 
 
 ##### SI1: brute_force
 `brute_force.cpp` reads the test file and counts the number of red/blue intersection and checks if it matches `k`. It checks every pair of red and blue segments and checks for intersection. If the number of intersection matches `k`, then program outputs `VERIFIED`. Otherwise, it outputs the number of computed intersections. 
