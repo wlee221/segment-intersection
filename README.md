@@ -39,43 +39,19 @@ g++ brute_force.cpp -std=17 -o BFwilliam
 * `m` rows of coordinates `px py rx ry` of red segments.
 * `n` rows of coordinates `px py rx ry` of blue segments.
 
-### Source file and algorithm description
+### Source file description
 
 ##### SI1: brute_force
-**Algorithm Details**: 
-    **Input**: `red`, `std::vector` of red segments. `blue`, `std::vector` of blue segments  
-    **Output**: number of red/blue intersections.  
-    **Runtime Complexity**: O(N<sup>2</sup>), where N = m + n.  
-  
 `brute_force.cpp` reads the test file and counts the number of red/blue intersection and checks if it matches `k`. It checks every pair of red and blue segments and checks for intersection. If the number of intersection matches `k`, then program outputs `VERIFIED`. Otherwise, it outputs the number of computed intersections. 
 
 ##### SI3: sort_flags 
-**Algorithm Details:**
-    **Input**: `flags`, `std::vector` of flags    
-    **Output**: sorts `flags` (no return value)   
-    **Runtime Complexity**: O(Nlog N), where N = m + n.  
-  
 `sort_flags.cpp` reads `test file` and generates start and terminal flags for each segment. Then, it sorts the flags using `std::sort` and prints to the output stream. Sorting is based on three-way comparison function in `classes/flag.hpp`. 
 
 ###### SI4: vertify_red
-**Algorithm Details**: 
-    **Input**: `flags`, `std::vector` of flags  
-    **Output**: intersecting segment pair if it exists. Otherwise, return empty pair {}.   
-    **Runtime Complexity**: O(Nlog N), where N = m + n.  
-  
 `verify_red.cpp` reads red segments from `test_file` and uses Bentley-Ottoman sweep to check that there exists no red/red crossings. To keep track of active segments, we use `std::multimap` for O(log n) operations (Note that most compilers uses rb-tree to implement `std::multimap`). Program outputs `VERIFIED` if there exists no crossings. Otherwise, it prints the crossing segment pairs.
 
 ##### SI5: break_segments
-**Algorithm Details**: 
-    **Input**: `flags`, `std::vector` of flags. `color`, color of the segments to break.  
-    **Output**: `std::vector` of segments with specified color, broken such that none contains flag point.    
-    **Runtime Complexity**: O(Nlog N), where N = m + n.  
-
 `break_segments.cpp` reads segments from `test_file` and breaks the red segments such that no segments share any interior points and contain no flag points in their interior. Its algorithm is an extension from Bentley-Ottoman sweep used in SI4 with additional end point checks.
 
 ##### SI6: get_above_below
-**Algorithm Details**: 
-    **Input**: `flags`, `std::vector` of flags. `color`, color of the segments to break.  
-    **Output**: `std::map` that maps each flag to an AboveBelow class   
-    **Runtime Complexity**: O(Nlog N), where N = m + n.  
 `get_above_below.cpp` reads (broken) segments from `test_file` and maps each flag to `AboveBelow` class containing red and blue segments above and below.
