@@ -18,7 +18,7 @@ inline void insert_segment(std::multimap<int, Segment> &active, const Segment s)
  * Input: 
  *      flags, vector of flags
  * Output: 
- *      multimap that maps each flag to an AboveBelow class
+ *      map that maps each flag to an AboveBelow class
  *****************************************************************/
 inline std::map<Flag, AboveBelow> get_above_below(std::vector<Flag> flags) {
     std::map<Flag, AboveBelow> above_below;
