@@ -57,7 +57,7 @@ int main(int argc, char* argv[]) {
             cout << "VERIFIED" << endl;
         }
 
-        cout << "Run time = " << duration.count() / (float) num_execution << " ms" << endl;
+        cout << "Run time = " << duration.count() / (float) num_execution << " microseconds" << endl;
     } else {
         cerr << "File could not be opened." << endl;
     }

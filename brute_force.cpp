@@ -54,7 +54,7 @@ int main(int argc, char* argv[]) {
         else
             cout << "ERROR: expected k = " << k << " but got " << k_test << "." << endl;
 
-        cout << "Run time = " << duration.count() / (float) num_execution << " ms" << endl;
+        cout << "Run time = " << duration.count() / (float) num_execution << " microseconds." << endl;
 
     } else {
         cerr << "ERROR: File could not be opened.";

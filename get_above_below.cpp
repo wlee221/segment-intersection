@@ -56,7 +56,7 @@ int main(int argc, char* argv[]) {
         for (auto it = flag_above_below.begin(); it != flag_above_below.end(); ++it) 
             cout << it->first << endl << "AboveBelow: " << it->second << endl << endl;
 
-        cout << "Run time = " << duration.count() / (float) num_execution << " ms" << endl;
+        cout << "Run time = " << duration.count() / (float) num_execution << " microseconds" << endl;
     } else {
         cerr << "File could not be opened." << endl;
     }

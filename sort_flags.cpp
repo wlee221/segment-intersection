@@ -50,7 +50,7 @@ int main(int argc, char* argv[]) {
         for (const auto &f : flags) 
             cout << f << endl; // print sorted flags
 
-        cout << "Run time = " << duration.count() / (float) num_execution << " ms" << endl;
+        cout << "Run time = " << duration.count() / (float) num_execution << " microseconds" << endl;
     } else {
         cerr << "File could not be opened";
     }
