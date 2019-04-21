@@ -45,7 +45,7 @@ int main(int argc, char* argv[]) {
             sort_flags(flags); 
 
         auto stop = chrono::high_resolution_clock::now(); // end timer
-        auto duration = chrono::duration<float>(stop - start);
+        auto duration = chrono::duration<float, micro>(stop - start);
 
         for (const auto &f : flags) 
             cout << f << endl; // print sorted flags

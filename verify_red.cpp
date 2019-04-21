@@ -48,7 +48,7 @@ int main(int argc, char* argv[]) {
         }
 
         auto stop = chrono::high_resolution_clock::now(); // end timer
-        auto duration = chrono::duration<float>(stop - start);
+        auto duration = chrono::duration<float, micro>(stop - start);
 
         if (intersection.has_value()) {
             cerr << "ERROR: intersection was found: " << intersection.value().first

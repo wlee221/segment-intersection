@@ -47,7 +47,7 @@ int main(int argc, char* argv[]) {
             k_test = count_intersections(red, blue);
 
         auto stop = chrono::high_resolution_clock::now(); // end timer
-        auto duration = chrono::duration<float, milli>(stop - start);
+        auto duration = chrono::duration<float, micro>(stop - start);
 
         if (k == k_test)
             cout << "VERIFIED" << endl;

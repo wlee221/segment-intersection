@@ -54,7 +54,7 @@ int main(int argc, char* argv[]) {
         }
 
         auto stop = chrono::high_resolution_clock::now(); 
-        auto duration = chrono::duration<float>(stop - start);
+        auto duration = chrono::duration<float, micro>(stop - start);
 
         std::vector<Segment> red;
         if (broken_segments.has_value()) {  
@@ -66,7 +66,7 @@ int main(int argc, char* argv[]) {
             cerr << "Error: Intersection detected." << endl;
         }
 
-        cout << "Run time = " << duration.count() / (float) num_execution << " ms" << endl;
+        cout << "Run time = " << duration.count() / (float) num_execution << " microseconds" << endl;
     } else {
         cerr << "File could not be opened." << endl;
     }

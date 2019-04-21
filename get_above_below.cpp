@@ -51,7 +51,7 @@ int main(int argc, char* argv[]) {
         }
 
         auto stop = chrono::high_resolution_clock::now(); // end timer
-        auto duration = chrono::duration<float>(stop - start);
+        auto duration = chrono::duration<float, micro>(stop - start);
 
         for (auto it = flag_above_below.begin(); it != flag_above_below.end(); ++it) 
             cout << it->first << endl << "AboveBelow: " << it->second << endl << endl;
