@@ -69,9 +69,25 @@ Table below summarized average runtime for each program. Runtimes were measured 
 |  break_segments |         180.569        |
 | get_above_below |         1002.94        |
 
-## Conclusion
-##### Accomplished
+## Reflection
+I finished SI1 through SI6, but could not finish SI7 by deadline. Following summarizes my reflection on this project.
 
-##### Unaccomplished
+##### SI1 through 6
+Because I could not finish SI7 in time, I focused most of time on improving SI6 through SI7, with degeneracies handled. Major improvement was on implementing efficient data structure for sweep lines. Although c++ library does not support self balancing bst, I learned that most commercial compilers uses rb-tree to implement `std::multimap<Key, Value>`. Multimap is an ordered map that allows duplicate key. This fit really well into the project because I could use y-values for `Key` and `Flag` for `Value` that allows O(log n) insertions, deletions, and search. The code is also cleaner than using linear search with vectors (see the commit [here](https://github.com/wlee221/segment-intersection/commit/f8c7129ba4d637267dead2989a9afba9e832198d).  
+I also focused on improving code conciseness. In particular, I used `std::optional` to report intersecting red/red segments, which manages an optional contained value. This is enables concise error handling, because I only need to add value if and only if there exists a crossing.
+##### Challenges and lessons
+*SI1 through 6:* 
+* Keeping concise code. This project involved multiple geometric primitives that I built from scratch. Hence, my code was initially unorganized. The following approaches helped:
+    * Data structure: I implemented data structure with arrays. This is resulted in multiple linear search and overall unreadable code. I was surprised that using a rb-tree was actually much more readable although it involves more advanced operations.  
+    * Refractoring and operation overloading were especially helpful. As I moved classes and algorithm implementation to subdirectories, the source files became more shorter (all within 100 lines). 
+*SI7*
+* Despite understanding algorithm for SI7, I could not finish it by the deadline. In particular, writing custom data structures to manage the bundles took more time than expected. This resulted from inappropriate time management and workflow:
+    *  I used arrays to implement SI4-7 initially. When I switched to rb-tree, I had to refractor all sweep line codes, when I already spent so much time on implementing it with arrays. Instead, I should have started with rb-tree, or refractor after I finished SI7. 
 
-##### Reflection
+##### Improvements
+* Implement SI7 
+* Use Cmake to compile the programs so that programs can be compiled in multiple architectures. 
+* Better error handling (exit program on detection)
+* get_above_below seems especially slow, so work on improving it.
+* Unit testing
+* More test cases
