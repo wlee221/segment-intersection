@@ -40,7 +40,7 @@ g++ brute_force.cpp -std=17 -o BFwilliam
 * `n` rows of coordinates `px py rx ry` of blue segments.
 
 ### Source file description
-*Note*: See README.md in impl/ to see algorithm input, output, and complexity details. 
+*Note*: See README.md in `impl/` to see algorithm input, output, and complexity details. 
 
 ##### SI1: brute_force
 `brute_force.cpp` reads the test file and counts the number of red/blue intersection and checks if it matches `k`. It checks every pair of red and blue segments and checks for intersection. If the number of intersection matches `k`, then program outputs `VERIFIED`. Otherwise, it outputs the number of computed intersections. 
@@ -48,7 +48,7 @@ g++ brute_force.cpp -std=17 -o BFwilliam
 ##### SI3: sort_flags 
 `sort_flags.cpp` reads `test file` and generates start and terminal flags for each segment. Then, it sorts the flags using `std::sort` and prints to the output stream. Sorting is based on three-way comparison function in `classes/flag.hpp`. 
 
-###### SI4: vertify_red
+##### SI4: vertify_red
 `verify_red.cpp` reads red segments from `test_file` and uses Bentley-Ottoman sweep to check that there exists no red/red crossings. To keep track of active segments, we use `std::multimap` for O(log n) operations (Note that most compilers uses rb-tree to implement `std::multimap`). Program outputs `VERIFIED` if there exists no crossings. Otherwise, it prints the crossing segment pairs.
 
 ##### SI5: break_segments
