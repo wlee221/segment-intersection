@@ -31,7 +31,7 @@ Given the arguments, program reads `file_path` and outputs average execution tim
 ##### Example
 For example, to compile and run `brute_force.cpp` on test file `redblue_200.txt` with `num_execution = 100`:
 ```
-g++ brute_force.cpp -std=17 -o BFwilliam
+g++ brute_force.cpp -std=c++17 -o BFwilliam
 ./BFwilliam test_data/redblue_200.txt 100
 ```
 ## Project Description
