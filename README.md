@@ -56,3 +56,14 @@ g++ brute_force.cpp -std=17 -o BFwilliam
 
 ##### SI6: get_above_below
 `get_above_below.cpp` reads (broken) segments from `test_file` and maps each flag to `AboveBelow` class containing red and blue segments above and below.
+
+## Results
+Table below summarized average runtime for each program. Runtimes were measured using `test_data/redblue_200.txt` and were averaged over 1000 runs.
+
+|     Program     | Runtime (microseconds) |
+|:---------------:|:----------------------:|
+|   brute_force   |         1099.45        |
+|    sort_flags   |         165.307        |
+|    verify_red   |         143.354        |
+|  break_segments |         180.569        |
+| get_above_below |         1002.94        |
