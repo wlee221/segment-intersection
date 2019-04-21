@@ -6,7 +6,7 @@
 This repository contains stages for red/blue segment intersections as outlined in [staged programming project](https://raindrops.in/snoeyink/view/54084b864251df7f2f8b4567). 
 
 ### Structure
-This repository is divided to following directories:
+This repository is divided into following directories:
 
 * `segment-intersection/`: contains C++ source files to compile. 
 * `segment-intersection/classes`: contains class header files.
@@ -18,8 +18,8 @@ This repository is divided to following directories:
 
 ### Compilation and Execution
 ##### Compilation
-C++17 Compiler is required to compile the source files. For most commercial compilers, you need to add `-std=c++17` flag to enable c++17 features.  
-Bash program `compile.sh` is provided to help compilation with gcc/g++. It compiles all .cpp source files and saves executables in `build/`. 
+C++17 Compiler is required to compile the source files. For most commercial compilers, you need to add `-std=c++17` flag.  
+Bash program `compile.sh` is provided to help compilation with gcc/g++. It compiles all `.cpp` source files and saves executables in `build/`. 
 
 ##### Execution 
 Executables take two arguments: 
@@ -67,3 +67,10 @@ Table below summarized average runtime for each program. Runtimes were measured 
 |    verify_red   |         143.354        |
 |  break_segments |         180.569        |
 | get_above_below |         1002.94        |
+
+## Conclusion
+##### Accomplished
+
+##### Unaccomplished
+
+##### Reflection
