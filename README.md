@@ -69,6 +69,10 @@ Table below summarized average runtime for each program. Runtimes were measured 
 |  break_segments |         180.569        |
 | get_above_below |         1002.94        |
 
+Tested on: 
+* Intel Core i7-6700HQ @ 2.60 GHz
+* 16GB DDR4 RAM
+
 ## Reflection
 I finished SI1 through SI6, but could not finish SI7 by deadline. Following summarizes my reflection on this project.
 
